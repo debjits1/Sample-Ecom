@@ -19,6 +19,9 @@ const CheckoutStepsProvider = (props) => {
                     ...state,
                     active: action.data.nextStep
                 }
+            case 'reset': {
+                return initialState;
+            }
             default: 
                 return null
         }

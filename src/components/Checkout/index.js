@@ -1,8 +1,6 @@
 import { Box } from '@mui/material';
-import React, { useContext, useEffect } from 'react';
-import { Product } from '../../contexts/ProductProvider';
+import React, { useContext } from 'react';
 import { CheckoutSteps } from '../../contexts/StepProvider';
-import useFetch from '../../hooks/useFetch';
 import OrderComplete from '../OrderComplete';
 import Payment from '../Payment';
 import ProductList from '../ProductList';
@@ -11,15 +9,6 @@ import Steps from '../Steps';
 import './style.css';
 
 const Checkout = () => {
-    const { data, loading, error } = useFetch('MOCK_DATA.json');
-
-    const [, dispatchProductAction] = useContext(Product);
-
-    useEffect(() => {
-        if (!loading && data) {
-            dispatchProductAction({ type: 'product_list', data });
-        }
-    }, [data, loading, error, dispatchProductAction]);
 
     const [stepsData] = useContext(CheckoutSteps);
 

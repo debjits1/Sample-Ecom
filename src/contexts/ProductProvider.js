@@ -26,6 +26,9 @@ const ProductProvider = (props) => {
                     list: action.data
                 }
             }
+            case 'reset': {
+                return initialState;
+            }
             default: 
                 return null
         }

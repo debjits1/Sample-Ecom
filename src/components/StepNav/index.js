@@ -1,9 +1,11 @@
 import { Button, Paper } from '@mui/material';
 import { Box } from '@mui/system';
 import React, { useContext } from 'react';
+import { Product } from '../../contexts/ProductProvider';
 import { CheckoutSteps } from '../../contexts/StepProvider';
 const StepNav = () => {
     const [stepsData, dispatchStepAction] = useContext(CheckoutSteps);
+    const [, dispatchProductAction] = useContext(Product);
 
     const isFirstStep = stepsData.active === 0;
 
@@ -23,7 +25,9 @@ const StepNav = () => {
         dispatchStepAction({ type: 'change_step', data: { nextStep: stepsData.active + 1 } })
     };
     const onReset = () => {
-        window.location.reload();
+        dispatchStepAction({ type: 'reset'});
+        dispatchProductAction({type: 'reset'});
+        
     };
 
     return (

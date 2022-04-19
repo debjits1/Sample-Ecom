@@ -1,11 +1,18 @@
 import { List, ListItem, Paper } from '@mui/material';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Product } from '../../contexts/ProductProvider';
+import useFetch from '../../hooks/useFetch';
 import ListElement from '../ListElement';
 
 const ProductList = () => {
-  const [productData] = useContext(Product);
+  const [productData, dispatchProductAction] = useContext(Product);
+  const { data, loading, error } = useFetch('MOCK_DATA.json');
 
+  useEffect(() => {
+      if (!loading && data) {
+          dispatchProductAction({ type: 'product_list', data });
+      }
+  }, [data, loading, error, dispatchProductAction]);
   return (
     <Paper elevation={1}>
       <List>

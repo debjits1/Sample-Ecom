@@ -25,7 +25,8 @@ export default function Payment() {
     const selectedItems = productData
         && productData.list
         && productData.list.filter((item) => {
-            total += item.selected ? item.price : 0;
+            const price = item.selected ? item.price : 0;
+            total = parseFloat((total + price).toFixed(2))
             return item.selected;
         });
     const { discounted, payable } = usePriceCalc(total, discountPercentage);
