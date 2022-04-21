@@ -12,9 +12,10 @@ const ListElement = ({ data }) => {
     const selected = !!data.selected;
 
     return (
-        <ListItemButton role={undefined} onClick={onSelect} dense>
+        <ListItemButton role={undefined} onClick={onSelect} dense data-testid="list-item">
             <ListItemIcon>
                 <Checkbox
+                    data-testid="item-checkbox"
                     edge="start"
                     checked={selected}
                     disableRipple

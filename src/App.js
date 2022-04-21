@@ -5,7 +5,7 @@ import CheckoutStepsProvider from './contexts/StepProvider';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="app-root">
       <ProductProvider>
         <CheckoutStepsProvider>
           <Checkout />
